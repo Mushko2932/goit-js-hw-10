@@ -1,6 +1,7 @@
 export function fetchCountries(name) {
-    fetch(
-      'https://restcountries.com/v2/all?fields=name,capital,population,flags,languages'
+  const BASE_URL = 'https://restcountries.com/v2';
+  fetch(
+    `${BASE_URL}/all?fields=name,capital,population,flags,languages`
     )
       .then(response => {
         if (!response.ok) {
@@ -8,9 +9,11 @@ export function fetchCountries(name) {
         }
         return response.json();
       })
-      .then(country => {
-        console.log(country);
+      .then(data => {
+        console.log(data);
       })
-      .catch(error => {});
+      .catch(error => {
+        console.log('ERROR :>> ', error);
+      });
 }
 
